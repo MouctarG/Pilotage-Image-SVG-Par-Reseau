@@ -1,0 +1,26 @@
+<svg width="500" height="500">
+    <g id="sol">
+        <rect x="0" y="400" width="500" height="100" fill="green"/>
+    </g>
+    <g id="ciel">
+        <rect x="0" y="0" width="500" height="400" fill="#FF9E26">
+            <driven target="fill" by="sky_color" type="color" delay="2000"/>
+        </rect>
+        <g id="soleil">
+            <circle cx="250" cy="100" r="100" fill="orange" opacity="1" style="stroke: yellow; stroke-width: 5;">
+                <driven target="style" by="cstyle" type="compound"/>
+                <driven target="cx" by="sun_x" type="int" delay="4000"/>
+                <driven target="cy" by="sun_y" type="int" delay="2000"/>
+                <driven target="opacity" by="sun_op" type="doubleInterval(0, 1)"/>
+                <driven target="fill" by="sun_color" type="list('red','orange','yellow')"/>
+            </circle>
+        </g>
+    </g>
+       <g id="maison">
+        <rect x="300" y="325" width="150" height="115" fill="gray"/>
+        <polyline points="300 325 375 275 450 325" stroke="black" fill="red" stroke-width="5">
+            <driven target="points" by="roof" type="compound"/>
+            <driven target="stroke" by="roof_color" type="regex('^bl.*\'?$')"/>
+        </polyline>
+    </g>
+</svg>
